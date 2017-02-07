@@ -5,12 +5,11 @@
 ** Login   <romain.pillot@epitech.net>
 ** 
 ** Started on  Mon Feb  6 20:52:39 2017 romain pillot
-** Last update Tue Feb  7 13:53:22 2017 romain pillot
+** Last update Tue Feb  7 14:36:07 2017 romain pillot
 */
 
 #include <fcntl.h>
 #include <sys/stat.h>
-#include <stdbool.h>
 #include <stdlib.h>
 #include "gnl.h"
 #include "vector.h"
@@ -50,10 +49,10 @@ static int	parse_ship_data(char *str, char data[][WIDTH], int prev_size)
   t_vector	b;
 
   size = *str ? str[0] - '0' : 0;
-  a.x = size && str[1] && str[2] ? str[2] - 'A' + 1 : 0;
+  a.x = size && str[1] == ':' && str[2] ? str[2] - 'A' + 1 : 0;
   a.y = a.x && str[3] ? str[3] - '0' : 0;
-  b.x = a.y && str[4] && str[5] ? str[5] - 'A' + 1 : 0;
-  b.y = b.x && str[6] ? str[6] - '0' : 0;
+  b.x = a.y && str[4] == ':' && str[5] ? str[5] - 'A' + 1 : 0;
+  b.y = b.x && str[6] && !(str[7]) ? str[6] - '0' : 0;
   free(str);
   return (valid_ship(size, a, b, prev_size) &&
 	  insert_ship(size,
@@ -76,4 +75,9 @@ bool	load_ships(char *file_name, char data[][WIDTH])
 	!(prev_size = parse_ship_data(str, data, prev_size)))
       return (false);
   return (true);
+}
+
+void	display_ships(char data[][WIDTH])
+{
+  
 }
