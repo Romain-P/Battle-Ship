@@ -5,11 +5,16 @@
 ** Login   <romain.pillot@epitech.net>
 ** 
 ** Started on  Tue Feb  7 15:34:25 2017 romain pillot
-** Last update Tue Feb  7 16:03:25 2017 romain pillot
+** Last update Tue Feb  7 16:16:55 2017 romain pillot
 */
 
 #include "ship.h"
 #include "display.h"
+
+void	attack_cell(char *cell, char data[][WIDTH])
+{
+  
+}
 
 void	display_ships(char data[][WIDTH], t_side side)
 {
