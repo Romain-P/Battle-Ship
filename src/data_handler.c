@@ -5,7 +5,7 @@
 ** Login   <romain.pillot@epitech.net>
 ** 
 ** Started on  Tue Feb  7 15:34:25 2017 romain pillot
-** Last update Tue Feb  7 20:08:13 2017 romain pillot
+** Last update Tue Feb  7 20:31:33 2017 romain pillot
 */
 
 #include "ship.h"
@@ -29,15 +29,16 @@ bool	alive(char data[][WIDTH])
   return (alive);
 }
 
-t_cell	*parse_cell(char *cell, char data[][WIDTH])
+t_cell	*parse_cell(char *cell)
 {
   int	i;
   int	j;
 
   i = cell ? *cell - 'A' : -1;
   j = i >= 0 && cell[1] && !(cell[2]) ? cell[1] - '0' - 1 : -1;
-  display("attack:  \033[24m");
+  display("attack:  \e[3m");
   display(cell);
+  display("\e[0m");
   display_char('\n');
   if (i < 0 || j < 0 || i + 1 > WIDTH || j + 1 > HEIGHT)
     {
@@ -47,14 +48,18 @@ t_cell	*parse_cell(char *cell, char data[][WIDTH])
   return (create_cell(i, j));
 }
 
-void	attack_cell(t_cell cell, char data[][WIDTH])
+void		attack_cell(t_cell *cellp, char data[][WIDTH])
 {
+  t_cell	cell;
+
+  cell = *cellp;
   data[cell.y][cell.x] = data[cell.y][cell.x] && data[cell.y][cell.x] != 'o'
     ? 'x' : 'o';
   display_char(cell.y + 1 + 'A');
   display_char(cell.x + 1 + '0');
   display(":  ");
   display(data[cell.y][cell.x] == 'x' ? "hit\n\n\n" : "missed\n\n\n");
+  free(cellp);
 }
 
 void	display_ships(char data[][WIDTH], t_side side)

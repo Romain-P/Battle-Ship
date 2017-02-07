@@ -4,7 +4,7 @@
 ## Login   <jordan.roucom@epitech.net>
 ## 
 ## Started on  Sat Oct 29 17:09:21 2016 romain pillot
-## Last update Tue Feb  7 20:04:40 2017 romain pillot
+## Last update Tue Feb  7 20:25:16 2017 romain pillot
 ##
 
 CC	=	gcc
@@ -23,7 +23,7 @@ LIBS	=	-Llib -lgnl
 
 OBJS	=	$(SRCS:.c=.o)
 
-CFLAGS	+=	-Iinclude #-Werror -Wall -Wextra -Iinclude
+CFLAGS	+=	-Iinclude -Werror -Wall -Wextra -Iinclude
 
 all:	$(NAME)
 
