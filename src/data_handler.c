@@ -5,7 +5,7 @@
 ** Login   <romain.pillot@epitech.net>
 ** 
 ** Started on  Tue Feb  7 15:34:25 2017 romain pillot
-** Last update Tue Feb  7 19:44:34 2017 Yoann Rey
+** Last update Tue Feb  7 19:57:52 2017 romain pillot
 */
 
 #include "ship.h"
@@ -13,11 +13,20 @@
 #include "vector.h"
 #include <stdlib.h>
 
-bool	is_finished(char data[][WIDTH])
+bool	alive(char data[][WIDTH])
 {
   int	i;
   int	j;
+  bool	alive;
+  char	c;
 
+  i = (j = -1);
+  alive = false;
+  while (!alive && ++i < HEIGHT && (j = -1))
+    while(++j < WIDTH && !(alive = (c = data[i][j]) && c != 'o' && c != 'x'));
+  if (!alive)
+    display("Enemy won");
+  return (alive);
 }
 
 t_vector	*parse_cell(char *cell, char data[][WIDTH])
@@ -40,7 +49,7 @@ t_vector	*parse_cell(char *cell, char data[][WIDTH])
 
 void	attack_cell(t_vector cell, char data[][WIDTH])
 {
-  data[cell.y][cell.x] = data[cell.y][cell.x] &&data[cell.y][cell.x] != 'o'
+  data[cell.y][cell.x] = data[cell.y][cell.x] && data[cell.y][cell.x] != 'o'
     ? 'x' : 'o';
   display_char(cell.y + 1 + 'A');
   display_char(cell.x + 1 + '0');
