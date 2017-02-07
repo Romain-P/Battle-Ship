@@ -5,7 +5,7 @@
 ** Login   <romain.pillot@epitech.net>
 ** 
 ** Started on  Mon Feb  6 20:52:39 2017 romain pillot
-** Last update Tue Feb  7 14:36:07 2017 romain pillot
+** Last update Tue Feb  7 16:18:50 2017 Yoann Rey
 */
 
 #include <fcntl.h>
@@ -77,7 +77,23 @@ bool	load_ships(char *file_name, char data[][WIDTH])
   return (true);
 }
 
-void	display_ships(char data[][WIDTH])
+void	display_ships(char data[][WIDTH], t_side side)
 {
-  
+  int	i;
+  int	j;
+
+  i = (j = -1);
+  display(side == ALLY ? "my positions:\n" : "enemy's positions\n");
+  display(" |A B C D E F G H\n-+---------------\n");
+  while (++i < HEIGHT && (j = -1))
+    {
+      display_digit(i + 1);
+      display_char('|');
+      while (++j < WIDTH)
+	{
+	  if (j > 0)
+	    display_char(' ');
+	  display_char(data[i][j] == 0 ? '.' : data[i][j]);
+	}
+    }
 }
