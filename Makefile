@@ -4,7 +4,7 @@
 ## Login   <jordan.roucom@epitech.net>
 ## 
 ## Started on  Sat Oct 29 17:09:21 2016 romain pillot
-## Last update Tue Feb  7 13:09:18 2017 romain pillot
+## Last update Tue Feb  7 13:15:10 2017 romain pillot
 ##
 
 CC	=	gcc
@@ -16,7 +16,7 @@ RM	=	rm -f
 SRCS	=	src/main.c \
 		src/ship_loader.c
 
-LIBS	=	-Llibs -lgnl
+LIBS	=	-Llib -lgnl
 
 OBJS	=	$(SRCS:.c=.o)
 
