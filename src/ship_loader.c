@@ -1,11 +1,11 @@
 /*
-** shift_parser.c for  in /home/romain.pillot/projects/PSU_2016_navy/src
+** ship_loader.c for  in /home/romain.pillot/projects/PSU_2016_navy/src
 ** 
 ** Made by romain pillot
 ** Login   <romain.pillot@epitech.net>
 ** 
 ** Started on  Mon Feb  6 20:52:39 2017 romain pillot
-** Last update Tue Feb  7 00:36:14 2017 romain pillot
+** Last update Tue Feb  7 13:08:52 2017 romain pillot
 */
 
 #include <fcntl.h>
@@ -14,9 +14,9 @@
 #include <stdlib.h>
 #include "gnl.h"
 #include "vector.h"
-#include "shift.h"
+#include "ship.h"
 
-static bool	insert_shift(int size, t_vector a, t_vector b, char data[][WIDTH])
+static bool	insert_ship(int size, t_vector a, t_vector b, char data[][WIDTH])
 {
   int		*from;
   int		to;
@@ -34,7 +34,7 @@ static bool	insert_shift(int size, t_vector a, t_vector b, char data[][WIDTH])
   return (true);
 }
 
-static bool	valid_shift(int size, t_vector a, t_vector b, int prev_size)
+static bool	valid_ship(int size, t_vector a, t_vector b, int prev_size)
 {
   return (size == prev_size + 1 &&
 	  a.x == b.x ? ABS(a.y - b.y) + 1 == size : ABS(a.x - b.x) + 1 == size &&
@@ -42,7 +42,7 @@ static bool	valid_shift(int size, t_vector a, t_vector b, int prev_size)
 	  a.x <= WIDTH && a.y <= HEIGHT && b.x <= WIDTH && b.y <= HEIGHT);
 }
 
-static int	parse_shift_data(char *str, char data[][WIDTH], int prev_size)
+static int	parse_ship_data(char *str, char data[][WIDTH], int prev_size)
 {
   int		size;
   t_vector	a;
@@ -54,25 +54,25 @@ static int	parse_shift_data(char *str, char data[][WIDTH], int prev_size)
   b.x = a.y && str[4] && str[5] ? str[5] - 'A' + 1 : 0;
   b.y = b.x && str[6] ? str[6] - '0' : 0;
   free(str);
-  return (valid_shift(size, a, b, prev_size) &&
-	  insert_shift(size,
+  return (valid_ship(size, a, b, prev_size) &&
+	  insert_ship(size,
 		       a.x > b.x || a.y > b.y ? a : b,
 		       a.x > b.x || a.y > b.y ? b : a, data) ? size : 0);
 }
 
-bool	load_shifts(char *file_name, char data[][WIDTH])
+bool	load_ships(char *file_name, char data[][WIDTH])
 {
   char	*str;
-  int	shifts;
+  int	ships;
   int	fd;
   int	prev_size;
   
   fd = open(file_name, O_RDONLY);
-  shifts = -1;
-  prev_size = FIRST_SHIFT_LENGTH - 1;
-  while (++shifts < SHIFTS)
+  ships = -1;
+  prev_size = FIRST_SHIP_LENGTH - 1;
+  while (++ships < SHIPS)
     if (fd == -1 || !(str = get_next_line(fd)) ||
-	!(prev_size = parse_shift_data(str, data, prev_size)))
+	!(prev_size = parse_ship_data(str, data, prev_size)))
       return (false);
   return (true);
 }

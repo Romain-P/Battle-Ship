@@ -5,14 +5,14 @@
 ** Login   <romain.pillot@epitech.net>
 ** 
 ** Started on  Tue Feb  7 00:34:26 2017 romain pillot
-** Last update Tue Feb  7 00:35:52 2017 romain pillot
+** Last update Tue Feb  7 13:10:10 2017 romain pillot
 */
 
-#ifndef SHIFT_H_
-# define SHIFT_H_
+#ifndef SHIP_H_
+# define SHIP_H_
 
 # include "config.h"
 
-bool	load_shifts(char *file_name, char data[][WIDTH]);
+bool	load_ships(char *file_name, char data[][WIDTH]);
 
-#endif /* !SHIFT_H_ */
+#endif /* !SHIP_H_ */

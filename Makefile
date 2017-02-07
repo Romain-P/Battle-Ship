@@ -4,7 +4,7 @@
 ## Login   <jordan.roucom@epitech.net>
 ## 
 ## Started on  Sat Oct 29 17:09:21 2016 romain pillot
-## Last update Tue Feb  7 00:37:18 2017 romain pillot
+## Last update Tue Feb  7 13:09:18 2017 romain pillot
 ##
 
 CC	=	gcc
@@ -14,7 +14,7 @@ NAME	=	navy
 RM	=	rm -f
 
 SRCS	=	src/main.c \
-		src/shift_loader.c
+		src/ship_loader.c
 
 LIBS	=	-Llibs -lgnl
 
