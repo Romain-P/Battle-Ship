@@ -5,7 +5,7 @@
 ** Login   <romain.pillot@epitech.net>
 ** 
 ** Started on  Tue Feb  7 14:39:21 2017 romain pillot
-** Last update Tue Feb  7 16:32:16 2017 Yoann Rey
+** Last update Tue Feb  7 16:33:16 2017 Yoann Rey
 */
 
 static int	strlen(char *str)
