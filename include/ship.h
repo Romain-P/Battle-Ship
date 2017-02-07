@@ -5,7 +5,7 @@
 ** Login   <romain.pillot@epitech.net>
 ** 
 ** Started on  Tue Feb  7 00:34:26 2017 romain pillot
-** Last update Tue Feb  7 18:09:02 2017 Yoann Rey
+** Last update Tue Feb  7 19:25:28 2017 Yoann Rey
 */
 
 #ifndef SHIP_H_
@@ -13,6 +13,7 @@
 
 # include "config.h"
 # include <stdbool.h>
+# include "vector.h"
 
 typedef enum	e_side
 {
@@ -20,10 +21,12 @@ typedef enum	e_side
   ENEMY
 }		t_side;
 
-bool	load_ships(char *file_name, char data[][WIDTH]);
+bool		load_ships(char *file_name, char data[][WIDTH]);
 
-void	display_ships(char data[][WIDTH], t_side side);
+void		display_ships(char data[][WIDTH], t_side side);
 
-bool	attack_cell(char *cell, char data[][WIDTH]);
+void		attack_cell(t_vector cell, char data[][WIDTH]);
+
+t_vector	*parse_cell(char *cell, char data[][WIDTH]);
 
 #endif /* !SHIP_H_ */
