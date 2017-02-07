@@ -5,10 +5,13 @@
 ** Login   <romain.pillot@epitech.net>
 ** 
 ** Started on  Tue Feb  7 14:39:21 2017 romain pillot
-** Last update Tue Feb  7 16:33:16 2017 Yoann Rey
+** Last update Tue Feb  7 15:45:23 2017 romain pillot
 */
 
-static int	strlen(char *str)
+#include "display.h"
+#include <unistd.h>
+
+static int	str_length(char *str)
 {
   int		i;
 
@@ -19,7 +22,7 @@ static int	strlen(char *str)
 
 void	display(char *str)
 {
-  write(1, str, strlen(str));
+  write(1, str, str_length(str));
 }
 
 void	display_digit(int digit)

@@ -5,7 +5,7 @@
 ** Login   <romain.pillot@epitech.net>
 ** 
 ** Started on  Mon Feb  6 20:52:39 2017 romain pillot
-** Last update Tue Feb  7 16:18:50 2017 Yoann Rey
+** Last update Tue Feb  7 16:02:07 2017 romain pillot
 */
 
 #include <fcntl.h>
@@ -27,7 +27,7 @@ static bool	insert_ship(int size, t_vector a, t_vector b, char data[][WIDTH])
       if (data[a.y - 1][a.x - 1])
 	return (false);
       else
-	data[a.y - 1][a.x - 1] = size;
+	data[a.y - 1][a.x - 1] = size + '0';
       (*from)++;
     }
   return (true);
@@ -56,8 +56,8 @@ static int	parse_ship_data(char *str, char data[][WIDTH], int prev_size)
   free(str);
   return (valid_ship(size, a, b, prev_size) &&
 	  insert_ship(size,
-		       a.x > b.x || a.y > b.y ? a : b,
-		       a.x > b.x || a.y > b.y ? b : a, data) ? size : 0);
+		       a.x > b.x || a.y > b.y ? b : a,
+		       a.x > b.x || a.y > b.y ? a : b, data) ? size : 0);
 }
 
 bool	load_ships(char *file_name, char data[][WIDTH])
@@ -66,7 +66,7 @@ bool	load_ships(char *file_name, char data[][WIDTH])
   int	ships;
   int	fd;
   int	prev_size;
-  
+
   fd = open(file_name, O_RDONLY);
   ships = -1;
   prev_size = FIRST_SHIP_LENGTH - 1;
@@ -75,25 +75,4 @@ bool	load_ships(char *file_name, char data[][WIDTH])
 	!(prev_size = parse_ship_data(str, data, prev_size)))
       return (false);
   return (true);
-}
-
-void	display_ships(char data[][WIDTH], t_side side)
-{
-  int	i;
-  int	j;
-
-  i = (j = -1);
-  display(side == ALLY ? "my positions:\n" : "enemy's positions\n");
-  display(" |A B C D E F G H\n-+---------------\n");
-  while (++i < HEIGHT && (j = -1))
-    {
-      display_digit(i + 1);
-      display_char('|');
-      while (++j < WIDTH)
-	{
-	  if (j > 0)
-	    display_char(' ');
-	  display_char(data[i][j] == 0 ? '.' : data[i][j]);
-	}
-    }
 }
