@@ -5,10 +5,11 @@
 ** Login   <romain.pillot@epitech.net>
 ** 
 ** Started on  Mon Feb  6 20:52:39 2017 romain pillot
-** Last update Tue Feb  7 18:33:35 2017 Yoann Rey
+** Last update Tue Feb  7 18:35:06 2017 Yoann Rey
 */
 
 #include <fcntl.h>
+#include <unistd.h>
 #include <sys/stat.h>
 #include <stdlib.h>
 #include "gnl.h"
