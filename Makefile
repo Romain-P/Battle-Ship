@@ -4,7 +4,7 @@
 ## Login   <jordan.roucom@epitech.net>
 ## 
 ## Started on  Sat Oct 29 17:09:21 2016 romain pillot
-## Last update Tue Feb  7 19:26:48 2017 Yoann Rey
+## Last update Tue Feb  7 20:04:40 2017 romain pillot
 ##
 
 CC	=	gcc
@@ -17,7 +17,7 @@ SRCS	=	src/main.c		\
 		src/ship_loader.c	\
 		src/data_handler.c	\
 		src/display.c		\
-		src/vector.c
+		src/cell.c
 
 LIBS	=	-Llib -lgnl
 

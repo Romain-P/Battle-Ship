@@ -5,19 +5,19 @@
 ** Login   <yoann.rey@epitech.net>
 ** 
 ** Started on  Tue Feb  7 19:15:13 2017 Yoann Rey
-** Last update Tue Feb  7 19:28:47 2017 Yoann Rey
+** Last update Tue Feb  7 20:06:20 2017 romain pillot
 */
 
-#include "vector.h"
+#include "cell.h"
 #include <stdlib.h>
 
-t_vector	*create_vector(int x, int y)
+t_cell		*create_cell(int x, int y)
 {
-  t_vector	*vector;
+  t_cell	*cell;
   
-  if (!(vector = malloc(sizeof(*vector))))
+  if (!(cell = malloc(sizeof(*cell))))
     return (NULL);
-  vector->x = x;
-  vector->y = y;
-  return (vector);
+  cell->x = x;
+  cell->y = y;
+  return (cell);
 }

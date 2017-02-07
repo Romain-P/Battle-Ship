@@ -5,7 +5,7 @@
 ** Login   <romain.pillot@epitech.net>
 ** 
 ** Started on  Mon Feb  6 20:52:39 2017 romain pillot
-** Last update Tue Feb  7 18:35:06 2017 Yoann Rey
+** Last update Tue Feb  7 20:07:07 2017 romain pillot
 */
 
 #include <fcntl.h>
@@ -13,10 +13,10 @@
 #include <sys/stat.h>
 #include <stdlib.h>
 #include "gnl.h"
-#include "vector.h"
+#include "cell.h"
 #include "ship.h"
 
-static bool	insert_ship(int size, t_vector a, t_vector b, char data[][WIDTH])
+static bool	insert_ship(int size, t_cell a, t_cell b, char data[][WIDTH])
 {
   int		*from;
   int		to;
@@ -34,7 +34,7 @@ static bool	insert_ship(int size, t_vector a, t_vector b, char data[][WIDTH])
   return (true);
 }
 
-static bool	valid_ship(int size, t_vector a, t_vector b, int prev_size)
+static bool	valid_ship(int size, t_cell a, t_cell b, int prev_size)
 {
   return (size == prev_size + 1 &&
 	  (a.x == b.x || a.y == b.y) &&
@@ -46,8 +46,8 @@ static bool	valid_ship(int size, t_vector a, t_vector b, int prev_size)
 static int	parse_ship_data(char *str, char data[][WIDTH], int prev_size)
 {
   int		size;
-  t_vector	a;
-  t_vector	b;
+  t_cell	a;
+  t_cell	b;
 
   size = *str ? str[0] - '0' : 0;
   a.x = size && str[1] == ':' && str[2] ? str[2] - 'A' + 1 : 0;

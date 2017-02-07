@@ -5,20 +5,20 @@
 ** Login   <romain.pillot@epitech.net>
 ** 
 ** Started on  Mon Feb  6 22:54:59 2017 romain pillot
-** Last update Tue Feb  7 19:24:07 2017 Yoann Rey
+** Last update Tue Feb  7 20:08:45 2017 romain pillot
 */
 
-#ifndef VECTOR_H_
-# define VECTOR_H_
+#ifndef CELL_H_
+# define CELL_H_
 
 # define ABS(x)	((x) < 0 ? (x) * -1 : (x))
 
-typedef struct	s_vector
+typedef struct	s_cell
 {
   int		x;
   int		y;
-}		t_vector;
+}		t_cell;
 
-t_vector	*create_vector(int x, int y);
+t_cell		*create_cell(int x, int y);
 
-#endif /* !VECTOR_H_ */
+#endif /* !CELL_H_ */

@@ -5,12 +5,12 @@
 ** Login   <romain.pillot@epitech.net>
 ** 
 ** Started on  Tue Feb  7 15:34:25 2017 romain pillot
-** Last update Tue Feb  7 19:57:52 2017 romain pillot
+** Last update Tue Feb  7 20:08:13 2017 romain pillot
 */
 
 #include "ship.h"
 #include "display.h"
-#include "vector.h"
+#include "cell.h"
 #include <stdlib.h>
 
 bool	alive(char data[][WIDTH])
@@ -29,10 +29,10 @@ bool	alive(char data[][WIDTH])
   return (alive);
 }
 
-t_vector	*parse_cell(char *cell, char data[][WIDTH])
+t_cell	*parse_cell(char *cell, char data[][WIDTH])
 {
-  int		i;
-  int		j;
+  int	i;
+  int	j;
 
   i = cell ? *cell - 'A' : -1;
   j = i >= 0 && cell[1] && !(cell[2]) ? cell[1] - '0' - 1 : -1;
@@ -44,10 +44,10 @@ t_vector	*parse_cell(char *cell, char data[][WIDTH])
       display("wrong position");
       return (NULL);
     }
-  return (create_vector(i, j));
+  return (create_cell(i, j));
 }
 
-void	attack_cell(t_vector cell, char data[][WIDTH])
+void	attack_cell(t_cell cell, char data[][WIDTH])
 {
   data[cell.y][cell.x] = data[cell.y][cell.x] && data[cell.y][cell.x] != 'o'
     ? 'x' : 'o';
