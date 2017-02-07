@@ -5,7 +5,7 @@
 ** Login   <romain.pillot@epitech.net>
 ** 
 ** Started on  Mon Feb  6 20:52:39 2017 romain pillot
-** Last update Tue Feb  7 13:12:34 2017 romain pillot
+** Last update Tue Feb  7 13:53:22 2017 romain pillot
 */
 
 #include <fcntl.h>
@@ -37,7 +37,7 @@ static bool	insert_ship(int size, t_vector a, t_vector b, char data[][WIDTH])
 static bool	valid_ship(int size, t_vector a, t_vector b, int prev_size)
 {
   return (size == prev_size + 1 &&
-	  (a.x != b.x || a.y != b.y) &&
+	  (a.x == b.x || a.y == b.y) &&
 	  (a.x == b.x ? ABS(a.y - b.y) + 1 == size : ABS(a.x - b.x) + 1 == size) &&
 	  a.x > 0 && a.y > 0 && b.x > 0 && b.y > 0 &&
 	  a.x <= WIDTH && a.y <= HEIGHT && b.x <= WIDTH && b.y <= HEIGHT);
