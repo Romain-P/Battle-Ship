@@ -5,7 +5,7 @@
 ** Login   <romain.pillot@epitech.net>
 ** 
 ** Started on  Mon Feb  6 20:52:39 2017 romain pillot
-** Last update Tue Feb  7 16:02:07 2017 romain pillot
+** Last update Tue Feb  7 18:33:35 2017 Yoann Rey
 */
 
 #include <fcntl.h>
@@ -66,13 +66,15 @@ bool	load_ships(char *file_name, char data[][WIDTH])
   int	ships;
   int	fd;
   int	prev_size;
+  bool	error;
 
   fd = open(file_name, O_RDONLY);
   ships = -1;
   prev_size = FIRST_SHIP_LENGTH - 1;
   while (++ships < SHIPS)
-    if (fd == -1 || !(str = get_next_line(fd)) ||
-	!(prev_size = parse_ship_data(str, data, prev_size)))
-      return (false);
-  return (true);
+    if ((error = fd == -1 || !(str = get_next_line(fd)) ||
+	 !(prev_size = parse_ship_data(str, data, prev_size))))
+      break;
+  close(fd);
+  return (!error);
 }
