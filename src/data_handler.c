@@ -5,7 +5,7 @@
 ** Login   <romain.pillot@epitech.net>
 ** 
 ** Started on  Tue Feb  7 15:34:25 2017 romain pillot
-** Last update Tue Feb  7 20:31:33 2017 romain pillot
+** Last update Wed Feb 15 02:22:58 2017 romain pillot
 */
 
 #include "ship.h"
@@ -62,7 +62,7 @@ void		attack_cell(t_cell *cellp, char data[][WIDTH])
   free(cellp);
 }
 
-void	display_ships(char data[][WIDTH], t_side side)
+void	display_map(char data[][WIDTH], t_side side)
 {
   int   i;
   int   j;

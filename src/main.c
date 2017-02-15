@@ -5,7 +5,7 @@
 ** Login   <romain.pillot@epitech.net>
 ** 
 ** Started on  Thu Nov 24 11:14:29 2016 romain pillot
-** Last update Tue Feb  7 20:32:11 2017 romain pillot
+** Last update Wed Feb 15 02:23:50 2017 romain pillot
 */
 
 #include "ship.h"
@@ -27,8 +27,8 @@ int	main()
       enmy[i][j] = 0;
   load_ships("pos1", ally);
   parse_cell("B2");
-  display_ships(ally, ALLY);
-  display_ships(enmy, ALLY);
+  display_map(ally, ALLY);
+  display_map(enmy, ALLY);
   alive(enmy);
   return (0);
 }
