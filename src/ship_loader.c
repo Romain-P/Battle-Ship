@@ -5,7 +5,7 @@
 ** Login   <romain.pillot@epitech.net>
 ** 
 ** Started on  Mon Feb  6 20:52:39 2017 romain pillot
-** Last update Tue Feb  7 20:07:07 2017 romain pillot
+** Last update Mon Feb 20 00:25:59 2017 romain pillot
 */
 
 #include <fcntl.h>
@@ -61,7 +61,7 @@ static int	parse_ship_data(char *str, char data[][WIDTH], int prev_size)
 		       a.x > b.x || a.y > b.y ? a : b, data) ? size : 0);
 }
 
-bool	load_ships(char *file_name, char data[][WIDTH])
+bool	load_ships(char *file_name, t_side side)
 {
   char	*str;
   int	ships;
@@ -74,7 +74,8 @@ bool	load_ships(char *file_name, char data[][WIDTH])
   prev_size = FIRST_SHIP_LENGTH - 1;
   while (++ships < SHIPS)
     if ((error = fd == -1 || !(str = get_next_line(fd)) ||
-	 !(prev_size = parse_ship_data(str, data, prev_size))))
+	 !(prev_size =
+	   parse_ship_data(str, side == ALLY ? navy->ally : navy->enemy, prev_size))))
       break;
   close(fd);
   return (!error);

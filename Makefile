@@ -4,7 +4,7 @@
 ## Login   <jordan.roucom@epitech.net>
 ## 
 ## Started on  Sat Oct 29 17:09:21 2016 romain pillot
-## Last update Tue Feb  7 20:25:16 2017 romain pillot
+## Last update Mon Feb 20 00:11:58 2017 romain pillot
 ##
 
 CC	=	gcc
@@ -15,9 +15,11 @@ RM	=	rm -f
 
 SRCS	=	src/main.c		\
 		src/ship_loader.c	\
-		src/data_handler.c	\
-		src/display.c		\
-		src/cell.c
+		src/map_handler.c	\
+		src/utils/display.c	\
+		src/utils/cell.c	\
+		src/utils/numbers.c	\
+		src/signal_handler.c
 
 LIBS	=	-Llib -lgnl
 

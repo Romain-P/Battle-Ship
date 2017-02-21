@@ -5,7 +5,7 @@
 ** Login   <romain.pillot@epitech.net>
 ** 
 ** Started on  Tue Feb  7 00:34:26 2017 romain pillot
-** Last update Wed Feb 15 02:23:31 2017 romain pillot
+** Last update Mon Feb 20 04:33:15 2017 romain pillot
 */
 
 #ifndef SHIP_H_
@@ -21,14 +21,16 @@ typedef enum	e_side
   ENEMY
 }		t_side;
 
-bool		load_ships(char *file_name, char data[][WIDTH]);
+bool		load_ships(char *file_name, t_side side);
 
-void		display_map(char data[][WIDTH], t_side side);
+void		display_map(t_side side);
 
-void		attack_cell(t_cell *cell, char data[][WIDTH]);
+bool		attack_cell(t_cell cell, t_side side, bool force);
 
-t_cell		*parse_cell(char *cell);
+t_cell		*read_parse_cell();
 
-bool		alive(char data[][WIDTH]);
+bool		alive(t_side side, bool display);
+
+bool		listen_signals();
 
 #endif /* !SHIP_H_ */
