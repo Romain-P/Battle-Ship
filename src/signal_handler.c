@@ -5,7 +5,7 @@
 ** Login   <romain.pillot@epitech.net>
 ** 
 ** Started on  Sun Feb 19 18:37:01 2017 romain pillot
-** Last update Tue Feb 21 11:29:09 2017 romain pillot
+** Last update Tue Feb 21 13:03:38 2017 romain pillot
 */
 
 #include "config.h"
@@ -24,8 +24,6 @@ static void	next_attack(int pid)
 
   navy->cell.x = 0;
   while (!(attack = read_parse_cell()));
-  putnbr(attack->x);
-  putnbr(attack->y);
   i = -1;
   while (++i < attack->x)
     {
